@@ -8,10 +8,12 @@ $conn = mysqli_connect ($server, $username, $password, $database_name);
 
 function registrasi($data){
     global $conn;
-
+    $name = $data['name'];
     $email = $data['email'];
     $password = $data['password'];
     $password2 = $data['password2'];
+
+
 
     $result = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email'");
 
@@ -29,10 +31,12 @@ function registrasi($data){
         return false;
     }
 
-    mysqli_query($conn , "INSERT INTO user VALUES (NULL, '$email', '$password' )");
+    mysqli_query($conn , "INSERT INTO user VALUES (NULL, '$name', '$email', '$password' )");
 
     return mysqli_affected_rows($conn);
 
 }
+
+
 
 ?>

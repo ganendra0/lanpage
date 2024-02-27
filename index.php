@@ -1,10 +1,17 @@
 <?php
- 
+ session_start();
+
+if(isset($_SESSION['login']) ) {
+    header("location: landing-page.php");
+    exit;
+}
  require 'koneksi.php';
 
 if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
+
+    
 
     // pengambilan data
     $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' " );
@@ -15,8 +22,9 @@ if(isset($_POST['login'])){
     $row = mysqli_fetch_assoc($result);
     
     if ($password == $row["password"]) {
+      $_SESSION['login']=true;
         header("location: landing-page.php");
-        exit;
+
     }
 
     else {
@@ -36,6 +44,13 @@ if(isset($_POST['login'])){
   }
 
 }
+
+  // Ambil email dari form login
+  $email = $_POST['email'];
+
+  // Simpan email dalam sesi
+  $_SESSION['email'] = $email;
+
 
 
 

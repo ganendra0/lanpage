@@ -54,7 +54,7 @@ body {
         display: block;
         margin-top: 20px;
       }
-
+      input[type="text"],
       input[type="email"],
       input[type="password"] {
         width: 100%;
@@ -93,6 +93,10 @@ body {
 <body>
 
 <form action="" method="post">
+    <label for="email">Name</label>
+    <input type="text" id="name" name="name" required>
+
+
     <label for="email">Email ID</label>
     <input type="email" id="email" name="email" required>
 

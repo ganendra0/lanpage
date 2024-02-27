@@ -21,7 +21,7 @@ body{
 
 
 .navbar li {
-    float: right;
+    float: left;
 }
 
 .navbar a {
@@ -30,6 +30,12 @@ body{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
+}
+
+.navbar p{
+    color: #ddd;
+    float: right;
+    margin-right: 50px;
 }
 
 .navbar a:hover {
