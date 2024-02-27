@@ -115,7 +115,7 @@ align-content: center;
    </div>
 
    <div class="back">
-    <a href="landing-page.html">Kembali ke halaman awal</a>
+    <a href="landing-page.php">Kembali ke halaman awal</a>
    </div>
 
     

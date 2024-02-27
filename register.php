@@ -5,8 +5,11 @@ require 'koneksi.php';
 if (isset($_POST['register'])) {
   if (registrasi($_POST) > 0 ) {
     echo "<script>
-    alert('user berhasil di tambahkan')
-    </script>";
+    alert('user berhasil di tambahkan');
+    window.location.href = 'index.php';
+     </script>";
+    
+
   }
   else{
     echo mysqli_error($conn);

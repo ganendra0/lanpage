@@ -19,8 +19,9 @@ body{
     overflow: hidden;
 }
 
+
 .navbar li {
-    float: left;
+    float: right;
 }
 
 .navbar a {
@@ -36,6 +37,9 @@ body{
     color: black;
 }
 
+.username h2 {
+    color: beige;
+}
 
 
 .head{

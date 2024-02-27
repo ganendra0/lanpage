@@ -14,7 +14,11 @@
             <li><a href="log.php">Services</a></li>
             <li><a href="https://instagram.com/ganendra_610?igshid=OGQ5ZDc2ODk2ZA==">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            
+          
+
         </ul>
+        
     </nav>
 
     <div class="tr">
@@ -50,20 +54,20 @@
 
     <section id="sukku">
         <div class="aj">
-        <a href="sukujawa.html">
+        <a href="sukujawa.php">
             <div class="jawa">
             <h2>Jawa</h2>
             <img src="jawa.jpeg">
         </div></a></div>
 
         <div class="as">
-            <a href="sukusunda.html"><div class="sunda">
+            <a href="sukusunda.php"><div class="sunda">
             <h2>Sunda</h2>
             <img src="sundaa.jpeg">
         </div></a></div>
 
     <div class="ab">
-        <a href="sukubetawi.html">
+        <a href="sukubetawi.php">
             <div class="betawi">
             <h2>Betawi</h2>
             <img src="betawi.webp">
@@ -71,14 +75,14 @@
     </a></div>
         
     <div class="am">
-        <a href="sukumadura.html">
+        <a href="sukumadura.php">
             <div class="madura">
             <h2>Madura</h2>
             <img src="madura.jpeg">
         </div></a></div>
 
         <div class="aba">
-        <a href="sukubaduy.html">
+        <a href="sukubaduy.php">
             <div class="baduy">
             <h2>Baduy</h2>
             <img src="baduy.webp">

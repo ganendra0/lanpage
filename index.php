@@ -15,7 +15,7 @@ if(isset($_POST['login'])){
     $row = mysqli_fetch_assoc($result);
     
     if ($password == $row["password"]) {
-        header("location: landing-page.html");
+        header("location: landing-page.php");
         exit;
     }
 
@@ -164,7 +164,7 @@ body {
   </form>
 
   <div class="register-link">
-    <p>Don't have an account? <a href="signup.php">Register</a></p>
+    <p>Don't have an account? <a href="register.php">Register</a></p>
   </div>
 
 </div>
