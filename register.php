@@ -106,6 +106,12 @@ body {
     <label for="passwordcf">Confirm Password</label>
     <input type="password" id="password2" name="password2" required>
 
+    <label for="level">Level</label>
+    <select name='level'>
+		<option value='user'>user</option>
+		<option value='admin'>admin</option>
+	  </select>
+
 
 
     <input type="submit" name="register">

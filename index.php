@@ -51,6 +51,18 @@ if(isset($_POST['login'])){
   // Simpan email dalam sesi
   $_SESSION['email'] = $email;
 
+  $ter = mysqli_query($conn, "SELECT level FROM user WHERE email = '$email'");
+if (mysqli_num_rows($ter) > 0) {
+    $row = mysqli_fetch_assoc($ter);
+    if ($row["level"] == 'admin') {
+        header("Location: admin.php");
+        exit; // Menambahkan exit untuk menghentikan eksekusi kode selanjutnya setelah pengalihan header
+    }
+}
+$admin=  $row["level"] == 'admin';
+$_SESSION['admin'] = $admin;
+  
+
 
 
 
