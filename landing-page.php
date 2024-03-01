@@ -413,11 +413,11 @@ section{
 if (mysqli_num_rows($cari) > 0) {
     while ($row = mysqli_fetch_assoc($cari)) {
         echo $row["name"];
+        if ($row["name"]=="") {
+            echo "unknown";
+        }
     }
-} else {
-    echo "unknown";
-}
-
+} 
 
 ?>
 </p>

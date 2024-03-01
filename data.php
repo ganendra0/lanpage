@@ -2,7 +2,6 @@
 
 require 'koneksi.php';
 
-// Lakukan query
 $query = "SELECT * FROM user";
 $result = mysqli_query($conn, $query);
 ?>
@@ -16,13 +15,26 @@ $result = mysqli_query($conn, $query);
     <style>
         table {
             border-collapse: collapse;
-            width: 100%;
+            width: 100%; 
+            margin-right: 30px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+
+
         }
         th, td {
             border: 1px solid black;
             padding: 8px;
             text-align: left;
-            border-color: #fff;
+            border-color: #000;
+            background-color: #fff;
+            color: #000;
+
+            
+
+        }
+        th{
+            background-color: rgb(128, 127, 128);
 
         }
 
@@ -32,12 +44,42 @@ $result = mysqli_query($conn, $query);
 
         }
 
+a.add-user, a.kembali {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: rgb(218, 167, 40); 
+    color: black; 
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+
+a.edit {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgb(0, 99, 212); 
+    color: white; 
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+a.hapus {
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: rgb(235, 71, 76); 
+    color: white; 
+    text-decoration: none;
+    border-radius: 3px;
+}
+
+
         
     </style>
 </head>
 <body>
 
-<h2>Data Tabel</h2>
+<h1>Data Tabel User</h1>
+<a href="add.php" class = "add-user">add user</a>
 
 <table>
     <tr>
@@ -46,10 +88,10 @@ $result = mysqli_query($conn, $query);
         <th>Email</th>
         <th>Password</th>
         <th>Level</th>
-        <!-- Tambahkan kolom lain sesuai kebutuhan -->
+        <th>Operation</th>
     </tr>
     <?php
-    // Tampilkan data dari hasil query
+
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
@@ -58,8 +100,11 @@ $result = mysqli_query($conn, $query);
             echo "<td>" . $row["email"] . "</td>";
             echo "<td>" . $row["password"] . "</td>";
             echo "<td>" . $row["level"] . "</td>";
+            echo "<td>";
+            echo "<a class='edit'href='edit.php?id=".$row['id']."'>Edit</a> | ";
+            echo "<a class='hapus'href='hapus.php?id=".$row['id']."'>Hapus</a>";
+            echo "</td>";
 
-            // Tambahkan kolom lain sesuai kebutuhan
             echo "</tr>";
         }
     } else {
@@ -76,6 +121,5 @@ $result = mysqli_query($conn, $query);
 </html>
 
 <?php
-// Tutup koneksi database
 mysqli_close($conn);
 ?>
