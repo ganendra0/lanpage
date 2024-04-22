@@ -10,16 +10,12 @@ if(!isset($_SESSION['login']) ) {
 }
 
 
-// Periksa apakah pengguna sudah login (email tersimpan di sesi)
 if (isset($_SESSION['email'])) {
     $email = $_SESSION['email'];
 } else {
-    // Redirect ke halaman login jika pengguna belum login
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
-
-
 
 ?>
 
@@ -41,14 +37,22 @@ if (isset($_SESSION['email'])) {
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
 body{
     background-color: rgb(34, 33, 35);
 }
+
 
 .navbar {
     background-color: #333;
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
+    width: 100%;
 }
 
 .navbar ul {
@@ -56,6 +60,7 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
+    justify-content: space-between;
 }
 
 
@@ -67,68 +72,22 @@ body{
     display: block;
     color: rgb(218, 167, 40);
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    padding: 20px 16px;
+    text-decoration: none;}
+
+.navbar img{
+    padding: 13px 10px 5px;
+
 }
 
 .navbar p{
     color: #ddd;
     float: right;
     margin-right: 50px;
+    margin-top: 20px;
 }
 
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-.dropdown {
-  float: left;
-  overflow: hidden;
-}
-
-.dropdown .dropbtn {
-  font-size: 17px;
-  border: none;
-  outline: none;
-  color: rgb(218, 167, 40);
-  padding: 14px 16px;
-  background-color: inherit;
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #333;
-  color: rgb(218, 167, 40);
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-
-}
-
-.dropdown-content a {
-  float: none;
-  color: rgb(218, 167, 40);
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-  
-}
-
-.dropdown:hover .dropbtn {
     background-color: #ddd;
     color: black;
 }
@@ -140,13 +99,13 @@ body{
 
 .head{
     height: 500px;
-    width: 1250px;
+    width: 98%;
    margin-left: 30px;
    margin-top: 20px;
 }
 
 .head img{
-width: 98%;
+width: 96%;
 height: 400px;
 object-fit: cover;
 object-position: 10% 40%;
@@ -156,15 +115,18 @@ align-content: center;
  z-index: -1;
 }
 
+.tr{
+    position: absolute;
+    padding-top: 130px;
+    color: aliceblue;
+    text-align: center;
+    width: 100%; 
+}
+
 .tr h1{
     font-family: 'Cinzel', serif;
-    text-align: center;
-   position: absolute;
-   padding-left: 17%;
-   padding-right: 15%;
-   padding-top: 130px;
-   color: aliceblue;
-   font-size: 50px;
+    font-size: 50px;
+
 }
 
 .txt img{
@@ -191,6 +153,20 @@ align-content: center;
     font-size: 15px;
     position: relative;
     text-align: justify;
+}
+
+.tr a {
+    display: block;
+    padding: 5px 10px;
+    background-color: rgb(218, 167, 40);
+    color: black;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-left: auto; 
+    margin-right: auto; 
+    width: fit-content; 
+    font-family: 'Poppins', sans-serif;
+    margin-top: 3%;
 }
 
 .suku{
@@ -397,16 +373,16 @@ section{
 
     <nav class="navbar">
         <ul>
-            <li class="dropdown">
-  <a href="javascript:void(0)" class="dropbtn">Services</a>
-  <ul class="dropdown-content">
-    <li><a href="#">Profil</a></li>
-    <li><a href="logout.php">Log-out </a></li>
- </ul>
+            <!-- <li><img src="javent.png" width="150px" margin-top="5px"></li> -->
+            <li><a href="logout.php">Logout</a></li>
+            <li><a href="event.php">Event</a></li>
+            <li><a href="profil.php">Profil</a></li>
 
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#about">About</a></li>
-
+            <?php 
+            if ($_SESSION['admin']) {
+                echo "<li><a href='data.php'>Data</a></li>";
+            }
+            ?>
             
           <p>Halo,  <?php $cari = mysqli_query($conn, "SELECT name FROM user WHERE email = '$email' ");
 
@@ -427,12 +403,15 @@ if (mysqli_num_rows($cari) > 0) {
     </nav>
 
     <div class="tr">
-         <h1>Keragaman Suku di Pulau Jawa</h1>
+         <h1>Mau nonton pertunjukan budaya?</h1>
+            <a href="event.php">explore event</a>
     </div>
 
     <div class="head">
         <img src="gng.jpg">
     </div>
+
+   
 
 
     <div class="txt">
@@ -440,16 +419,13 @@ if (mysqli_num_rows($cari) > 0) {
             suku memiliki warisan budaya yang unik, termasuk bahasa, adat istiadat, seni tradisional, dan
             kepercayaan yang melekat dalam kehidupan sehari-hari. Melalui perpaduan harmonis antara
             berbagai suku, Pulau Jawa menjadi tempat di mana keberagaman menjadi kekuatan utama dalam
-            membentuk identitas budaya yang kaya dan berwarna.<br><br>Suku-suku yang mendiami Pulau Jawa menghidupi keberagaman budaya melalui tradisi, bahasa, seni, dan nilai-nilai yang menjadi warisan turun-temurun, memperkaya kehidupan sehari-hari serta memberikan warna yang khas dalam panorama budaya Indonesia. <br><br> Berikut adalah beberapa suku yang ada di pulau Jawa  
-            </p>
+            membentuk identitas budaya yang kaya dan berwarna.<br><br>Temukan pengalaman yang mendalam dan beragam dengan menjelajahi berbagai acara budaya dari berbagai sudut Pulau Jawa dan sekitarnya. Mari kita jalin kembali hubungan dengan warisan nenek moyang kita melalui perjalanan budaya yang tak terlupakan. Segera temukan dan ikuti acara-acara inspiratif kami, dan hadirilah untuk merayakan keberagaman budaya yang membanggakan Indonesia.            </p>
 
             
         <img src="peta.png">
     
 
     </div>
-  
-   
 
     <div class="suku">
         <h2>Suku di Pulau Jawa</h2>

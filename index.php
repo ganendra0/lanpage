@@ -1,73 +1,43 @@
 <?php
  session_start();
 
-if(isset($_SESSION['login']) ) {
-    header("location: landing-page.php");
-    exit;
-}
+ if(isset($_SESSION['login']) ) {
+     header("location: landing-page.php");
+     exit;
+ }
  require 'koneksi.php';
+ 
+ if(isset($_POST['login'])){
+     $email = $_POST['email'];
+     $password = $_POST['password'];
+ 
+     $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' " );
+ 
+     if(mysqli_num_rows($result) === 1 ){
+         $row = mysqli_fetch_assoc($result);
+         if ($password == $row["password"]) {
+             $_SESSION['login'] = true;
+             $_SESSION['email'] = $email;
 
-if(isset($_POST['login'])){
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-
-    
-
-    // pengambilan data
-    $result = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' " );
-
-  // pengecekan email
-  if(mysqli_num_rows($result) === 1 ){
-    // pengecekan pSSWORD
-    $row = mysqli_fetch_assoc($result);
-    
-    if ($password == $row["password"]) {
-      $_SESSION['login']=true;
-        header("location: landing-page.php");
-
-    }
-
-    else {
-      echo "<script>
-      alert('password salah')
-      </script>";
-  }
-
-  }
-
-  else {
-    echo "<script>
-    alert('email belum terdaftar')
-    </script>";
-  
-  
-  }
-
-}
-
-  // Ambil email dari form login
-  $email = $_POST['email'];
-
-  // Simpan email dalam sesi
-  $_SESSION['email'] = $email;
-
-  $ter = mysqli_query($conn, "SELECT level FROM user WHERE email = '$email'");
-if (mysqli_num_rows($ter) > 0) {
-    $row = mysqli_fetch_assoc($ter);
-    if ($row["level"] == 'admin') {
-        header("Location: admin.php");
-        exit; // Menambahkan exit untuk menghentikan eksekusi kode selanjutnya setelah pengalihan header
-    }
-}
-$admin=  $row["level"] == 'admin';
-$_SESSION['admin'] = $admin;
-  
-
-
-
-
-
-
+             $level = $row['level'];
+             if ($level == 'admin') {
+                 $_SESSION['admin'] = true;
+             } elseif ($level == 'seller') {
+                 $_SESSION['seller'] = true;
+             } 
+             header("location: landing-page.php");
+             exit;
+         } else {
+             echo "<script>
+             alert('Password salah');
+             </script>";
+         }
+     } else {
+         echo "<script>
+         alert('Email belum terdaftar');
+         </script>";
+     }
+ }
 ?>
 
 
@@ -81,20 +51,12 @@ $_SESSION['admin'] = $admin;
         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300&display=swap');
-body{
-    background-color: rgb(34, 33, 35);
-}
 
-.tr h1{
-    font-family: 'Cinzel', serif;
-    text-align: center;
-    margin-bottom: 100px;
-   color: aliceblue;
-   font-size: 50px;
-}
 
 body {
         font-family: Arial, sans-serif;
+        background-color: rgb(34, 33, 35);
+        margin-top: 100px;
       }
 
       form {

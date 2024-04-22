@@ -29,7 +29,7 @@ body{
 
 .head{
     height: 500px;
-    width: 1250px;
+    width: 100%;
    margin-left: 30px;
    margin-top: 20px;
 }
@@ -47,13 +47,12 @@ align-content: center;
 
 .tr h1{
     font-family: 'Cinzel', serif;
+    position: absolute;
+    padding-top: 130px;
+    color: aliceblue;
+    font-size: 50px;
     text-align: center;
-   position: absolute;
-   padding-left: 15%;
-   padding-right: 15%;
-   padding-top: 130px;
-   color: aliceblue;
-   font-size: 50px;
+    width: 100%; 
 }
 
 .judul{

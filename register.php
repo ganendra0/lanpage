@@ -109,7 +109,7 @@ body {
     <label for="level">Level</label>
     <select name='level'>
 		<option value='user'>user</option>
-		<option value='admin'>admin</option>
+		<option value='seller'>seller</option>
 	  </select>
 
 

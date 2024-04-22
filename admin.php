@@ -193,6 +193,16 @@ align-content: center;
     text-align: justify;
 }
 
+.event a{
+    padding: 5px 10px;
+    background-color: rgb(218, 167, 40); 
+    color: black; 
+    text-decoration: none;
+    border-radius: 10px;
+    margin-left: 50px;
+    font-family: 'Poppins', sans-serif;
+}
+
 .suku{
     padding-left: 80px;
     padding-top: 50px;
@@ -446,11 +456,15 @@ if (mysqli_num_rows($cari) > 0) {
 
             
         <img src="peta.png">
+
     
 
     </div>
-  
-   
+
+           <div class='event'>
+            <a href="event.php">event</a>
+        </div>
+
 
     <div class="suku">
         <h2>Suku di Pulau Jawa</h2>
