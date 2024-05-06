@@ -17,6 +17,7 @@ if (isset($_SESSION['email'])) {
     exit;
 }
 
+
 ?>
 
 
@@ -53,7 +54,11 @@ body{
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
     width: 100%;
+    position: sticky; /* Membuat navigasi tetap di tempatnya */
+    top: 0; /* Menempatkan navbar di bagian atas halaman */
+    z-index: 1000; /* Menentukan urutan tumpukan untuk menangani tumpukan yang lebih tinggi */
 }
+
 
 .navbar ul {
     list-style-type: none;

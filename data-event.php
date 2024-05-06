@@ -18,11 +18,11 @@ if(!isset($_SESSION['admin']) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Tabel</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+         @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-    body{
-        font-family: 'Poppins', sans-serif;
-    }
+body{
+    font-family: 'Poppins', sans-serif;
+}
 
         .navbar {
     background-color: #333;
@@ -142,34 +142,51 @@ a.hapus {
         </nav>
 
 <h1>Data Tabel User</h1>
-<a href="add.php" class = "add-user">add user</a>
+<a href="addevent.php" class = "add-user">add event</a>
+
+
+<h1><br>Data Tabel Event</h1>
 
 <table>
     <tr>
         <th>ID</th>
+        <th>Seller</th>
         <th>Nama</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Level</th>
-        <th>Operation</th>
+        <th>Deskripsi</th>
+        <th>Tanggal</th>
+        <th>Lokasi</th>
+        <th>Jam</th>
+        <th>Harga</th>
     </tr>
     <?php
 
-$query = "SELECT * FROM user";
+$query = "SELECT 
+e.id,
+u.name AS seller,
+e.nama,
+e.deskripsi,
+e.tanggal,
+e.lokasi,
+e.jam,
+e.harga
+FROM 
+event AS e
+JOIN 
+user AS u ON e.idseller = u.id
+";
 $result = mysqli_query($conn, $query);
 
     if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td>" . $row["id"] . "</td>";
-            echo "<td>" . $row["name"] . "</td>";
-            echo "<td>" . $row["email"] . "</td>";
-            echo "<td>" . $row["password"] . "</td>";
-            echo "<td>" . $row["level"] . "</td>";
-            echo "<td>";
-            echo "<a class='edit'href='edit.php?id=".$row['id']."'>Edit</a> | ";
-            echo "<a class='hapus'href='hapus.php?id=".$row['id']."'>Hapus</a>";
-            echo "</td>";
+            echo "<td>" . $row["seller"] . "</td>";
+            echo "<td>" . $row["nama"] . "</td>";
+            echo "<td>" . $row["deskripsi"] . "</td>";
+            echo "<td>" . $row["tanggal"] . "</td>";
+            echo "<td>" . $row["lokasi"] . "</td>";
+            echo "<td>" . $row["jam"] . "</td>";
+            echo "<td>" . $row["harga"] . "</td>";
 
             echo "</tr>";
         }
@@ -180,6 +197,8 @@ $result = mysqli_query($conn, $query);
   
     ?>
 </table>
+
+
 
 <a class = 'kembali' href="landing-page.php">Kembali</a>
 

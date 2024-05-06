@@ -18,11 +18,13 @@ if(!isset($_SESSION['admin']) ) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Tabel</title>
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-    body{
-        font-family: 'Poppins', sans-serif;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
 
         .navbar {
     background-color: #333;
@@ -144,42 +146,42 @@ a.hapus {
 <h1>Data Tabel User</h1>
 <a href="add.php" class = "add-user">add user</a>
 
+
+<h1><br>Data Tabel Pembayaran </h1>
+
 <table>
-    <tr>
-        <th>ID</th>
-        <th>Nama</th>
-        <th>Email</th>
-        <th>Password</th>
-        <th>Level</th>
-        <th>Operation</th>
-    </tr>
-    <?php
+        <tr>
+            <th>ID</th>
+            <th>Nama Content</th>
+            <th>Total</th>
+            <th>Payment</th>
+            <th>Email User</th>
+        </tr>
+        <?php
 
-$query = "SELECT * FROM user";
-$result = mysqli_query($conn, $query);
+        $query = "SELECT p.id, e.nama AS nama_content, p.total, p.payment, p.uid, u.email 
+                  FROM payment AS p 
+                  INNER JOIN event AS e ON e.id = p.idc 
+                  INNER JOIN user AS u ON u.id = p.uid";
+        $result = mysqli_query($conn, $query);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "<tr>";
-            echo "<td>" . $row["id"] . "</td>";
-            echo "<td>" . $row["name"] . "</td>";
-            echo "<td>" . $row["email"] . "</td>";
-            echo "<td>" . $row["password"] . "</td>";
-            echo "<td>" . $row["level"] . "</td>";
-            echo "<td>";
-            echo "<a class='edit'href='edit.php?id=".$row['id']."'>Edit</a> | ";
-            echo "<a class='hapus'href='hapus.php?id=".$row['id']."'>Hapus</a>";
-            echo "</td>";
-
-            echo "</tr>";
+        if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                echo "<td>" . $row["id"] . "</td>";
+                echo "<td>" . $row["nama_content"] . "</td>";
+                echo "<td>" . $row["total"] . "</td>";
+                echo "<td>" . $row["payment"] . "</td>";
+                echo "<td>" . $row["email"] . "</td>";
+                echo "</tr>";
+            }
+        } else {
+            echo "<tr><td colspan='6'>Tidak ada data yang ditemukan</td></tr>";
         }
-    } else {
-        echo "<tr><td colspan='3'>Tidak ada data yang ditemukan</td></tr>";
-    }
 
-  
-    ?>
-</table>
+
+        ?>
+    </table>
 
 <a class = 'kembali' href="landing-page.php">Kembali</a>
 

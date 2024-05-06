@@ -1,19 +1,16 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 session_start();
 
 require 'koneksi.php';
 
-if (!$_SESSION['seller']) {
+if (!$_SESSION['seller'] && !$_SESSION['admin']) {
   header("Location: event.php");
   exit;
 }
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $seller = $_SESSION['email'];
+    $idseller = $_SESSION['iduser'];
     $nama = $_POST['nama'];
     $deskripsi = $_POST['deskripsi'];
     $lokasi = $_POST['lokasi'];
@@ -25,8 +22,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $targetDir = "../landing/gambar/";
 
     if (move_uploaded_file($temp, $targetDir . $gambar)) {
-        $query = "INSERT INTO event (id, seller, nama, deskripsi, tanggal, lokasi, jam, gambar, harga) 
-                  VALUES (NULL, '$seller', '$nama', '$deskripsi', '$tanggal', '$lokasi', '$jam', '$gambar', '$harga')";
+        $query = "INSERT INTO event (id, idseller, nama, deskripsi, tanggal, lokasi, jam, gambar, harga) 
+                  VALUES (NULL, '$idseller', '$nama', '$deskripsi', '$tanggal', '$lokasi', '$jam', '$gambar', '$harga')";
         
         if (mysqli_query($conn, $query)) {
             echo "<script>

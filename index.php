@@ -18,6 +18,7 @@
          if ($password == $row["password"]) {
              $_SESSION['login'] = true;
              $_SESSION['email'] = $email;
+             $_SESSION['iduser'] = $row['id']; 
 
              $level = $row['level'];
              if ($level == 'admin') {

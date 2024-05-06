@@ -199,6 +199,16 @@ if ($_SESSION['seller']) {
     </div>";
 }
 
+elseif ($_SESSION['admin']) {
+    echo "<div class='navbar'>
+        <ul>
+            <div class='event'><li><a href='event.php'>All event</a></li></div>
+            <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
+            <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
+        </ul>     
+    </div>";
+}
+
 else{
     echo "<div class='navbarr'>
         <ul>

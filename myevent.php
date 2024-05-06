@@ -15,14 +15,13 @@ if (!isset($_SESSION['email'])) {
     exit;
 }
 
-if (!$_SESSION['seller']) {
+if (!$_SESSION['seller'] && !$_SESSION['admin']) {
     header("Location: event.php");
     exit;
   }
 
-$email = $_SESSION['email'];
-
-$query = "SELECT * FROM event WHERE seller = '$email' ";
+$idseller = $_SESSION['iduser'];
+$query = "SELECT * FROM event WHERE idseller = '$idseller' ";
 $result = mysqli_query($conn, $query);
 
 ?>
@@ -85,7 +84,7 @@ h1{
     font-family: 'Poppins', sans-serif;
     margin-left: 30px;
     margin-top: 55px;
-    margin-bottom: 50px;
+    margin-bottom: 115px;
 
 
 }
@@ -165,22 +164,40 @@ h1{
  <a href="landing-page.php">kembali</a>
 </div>
 
-
-<nav class="navbar">
+<?php
+if ($_SESSION['seller']) {
+    echo "<div class='navbar'>
         <ul>
-            <div class='event'><li><a href="event.php">All event</a></li></div>
-            <div class='myevent'><li><a href="myevent.php">My event</a></li></div>
+            <div class='event'><li><a href='event.php'>All event</a></li></div>
+            <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
         </ul>     
-    </nav>
+    </div>";
+}
+
+elseif ($_SESSION['admin']) {
+    echo "<div class='navbar'>
+        <ul>
+            <div class='event'><li><a href='event.php'>All event</a></li></div>
+            <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
+            <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
+        </ul>     
+    </div>";
+}
+
+else{
+    echo "<div class='navbarr'>
+        <ul>
+            <div class='event'><li><a href='event.php'>All event</a></li></div>
+            <div class='myevent'><li><a href='myticket.php'>My ticket</a></li></div>
+        </ul>     
+    </div>";
+}
+?>
 
    <h1>EVENT KEBUDAYAAN</h1>
 
    <div class="add">
-    <?php 
-    if ($_SESSION['seller']) {
-        echo "<a href='addevent.php'>add event</a>";
-    }
-    ?>
+  <a href='addevent.php'>add event</a>";
    </div>
 
    <?php

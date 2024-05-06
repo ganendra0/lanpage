@@ -5,35 +5,22 @@ session_start();
 require "koneksi.php";
 
 $id = $_GET['id'];
+$iduser = $_SESSION['iduser'];
+
+
+$unik = mysqli_query($conn,"SELECT * FROM payment WHERE idc = '$id' AND uid = '$iduser'" );
+$uniks = mysqli_fetch_assoc($unik);
+$kodeunik = $uniks['unik'];
+
+
 
 $sql = "SELECT * FROM event WHERE id = '$id'";
 $query = mysqli_query($conn, $sql);
 $event = mysqli_fetch_assoc($query);
 
-if (isset($_POST['bayar'])) {
-    $idc = $id;
-    $harga = $event['harga'];
-    $total = $harga + 2000;
-    $payment = $_POST['metode'];
-    $uid = $_SESSION['iduser'];
-    $acak = bin2hex(random_bytes(8));
 
-    $query = "INSERT INTO payment (id, idc, total, payment, uid, unik) 
-                  VALUES (NULL, '$idc', '$total', '$payment', '$uid', '$acak')";
-        
-        if (mysqli_query($conn, $query)) {
-            echo "<script>
-                  alert('Pembayaran berhasil');
-                  window.location.href = 'event.php';
-                  </script>";
-        } else {
-            echo "<script>
-                  alert('Terjadi kesalahan. Data gagal ditambahkan.');
-                  window.location.href = 'addevent.php';
-                  </script>";
-        }
-}
-echo $id;
+
+
 ?>
 
 <!DOCTYPE html>
@@ -109,6 +96,17 @@ echo $id;
         border-radius: 10px;
       }
 
+      a{
+            padding: 5px 10px;
+            background-color: rgb(218, 167, 40); 
+            color: black; 
+            text-decoration: none;
+            border-radius: 10px;   
+            width: 100px;  
+            margin-top: 30px;  
+            margin-left: 10px;  
+        }
+
     </style>
 </head>
 <body>
@@ -129,16 +127,18 @@ echo $id;
     $harga= $event['harga'];
     $total = $harga + 2000;
     echo $total;
+
     ?></p>
-    <form method="post">
-    <label for="metode">Metode pembayaran : <br></label>
-    <select name='metode'>
-		<option value='qris'>qris</option>
-		<option value='transfer'>transfer bank</option>
-	  </select>
-      <input type="submit" name="bayar" value="bayar">
-    </form>
+    <p>Kode tiket: <br>
+    <?php
+    echo $kodeunik;
+    ?>
+</p>
+    
 </div>
+
+<a href="myticket.php">back</a>
+
 
 </body>
 </html>

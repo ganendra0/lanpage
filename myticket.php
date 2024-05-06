@@ -1,5 +1,6 @@
 <?php
 
+
 session_start();
 
 require 'koneksi.php';
@@ -16,11 +17,16 @@ if (!isset($_SESSION['email'])) {
     exit;
 }
 
-$email = $_SESSION['email'];
+$id = $_GET['id'];
+$uid = $_SESSION['iduser'];
 
 
-$query = "SELECT * FROM payment WHERE email = '$email'";
+$query = "SELECT * FROM payment WHERE uid = '$uid'";
 $result = mysqli_query($conn, $query);
+
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -100,7 +106,7 @@ body{
 }
 
 
-.myevent{
+.myticket{
     background-color: #ffe;
     border-radius: 30px;
 }
@@ -201,13 +207,24 @@ if ($_SESSION['seller']) {
     </div>";
 }
 
+elseif ($_SESSION['admin']) {
+    echo "<div class='navbar'>
+        <ul>
+            <div class='event'><li><a href='event.php'>All event</a></li></div>
+            <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
+            <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
+        </ul>     
+    </div>";
+}
+
 else{
     echo "<div class='navbarr'>
         <ul>
             <div class='event'><li><a href='event.php'>All event</a></li></div>
-            <div class='myevent'><li><a href='myticket.php'>My ticket</a></li></div>
+            <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
         </ul>     
-    </div>";}
+    </div>";
+}
 ?>
 
    <h1>EVENT KEBUDAYAAN</h1>
@@ -218,7 +235,7 @@ while ($baris = mysqli_fetch_assoc($result)) {
     $idc = $baris['idc'];
     $sql = "SELECT * FROM event WHERE id = '$idc'";
     $event_result = mysqli_query($conn, $sql);
-
+    
     while ($row = mysqli_fetch_assoc($event_result)) {
         echo '<div class="card">';
         echo '<img src="gambar/' . $row['gambar'] . '">';
@@ -226,7 +243,7 @@ while ($baris = mysqli_fetch_assoc($result)) {
         echo '<hr size="3px" width="70%" align="left" color="black">';
         echo '<p>Location: ' . $row['lokasi'] . '</p>';
         echo '<p>Date: ' . $row['tanggal'] . '</p>';
-        echo "<a class='detail' href='desc.php?id=".$row['id']."'>view detail</a>";
+        echo "<a class='detail' href='deticket.php?id=".$idc."'>detail ticket</a>";
         echo '</div>';
     }
 }
