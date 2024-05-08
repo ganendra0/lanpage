@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 
@@ -14,125 +13,80 @@ if (isset($_SESSION['email'])) {
     exit;
 }
 
+$cari = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' ");
+$row = mysqli_fetch_assoc($cari);
+
+
+
 
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>User Profil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Red+Rose:wght@300&display=swap');
-body{
-    background-color: rgb(34, 33, 35);
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(34, 33, 35);
+            color: #fff;
+            padding: 20px;
+        }
 
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-body {
-        font-family: Arial, sans-serif;
-        padding-top: 10px;
-        padding-left: 10px;
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-      }
+        li {
+            margin-bottom: 10px;
+        }
 
-h1{
-    color: #fff;
-}
+        .profil-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-      
+        .profil-container ul li {
+            font-size: 18px;
+        }
 
-.all{
-    position: absolute;
-    margin-left: 35%;
-}
+        .profil-container a.kembali {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: rgb(218, 167, 40); 
+            color: black; 
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+        }
 
-ul li{
-    color: #fff;
-}
-
-a.kembali {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: rgb(218, 167, 40); 
-    color: black; 
-    text-decoration: none;
-    border-radius: 5px;
-}
+        .profil-container a.kembali:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
-<h1>User Profil</h1>
-
-<ul> 
-    <li> id number : <?php $cari = mysqli_query($conn, "SELECT id FROM user WHERE email = '$email' ");
-
-if (mysqli_num_rows($cari) > 0) {
-    while ($row = mysqli_fetch_assoc($cari)) {
-        echo $row["id"];
-        if ($row["id"]=="") {
-            echo "unknown";
-        }
-    }
-} 
-
-?></li>
-
-    <li>name : <?php $cari = mysqli_query($conn, "SELECT name FROM user WHERE email = '$email' ");
-
-if (mysqli_num_rows($cari) > 0) {
-    while ($row = mysqli_fetch_assoc($cari)) {
-        echo $row["name"];
-        if ($row["name"]=="") {
-            echo "unknown";
-        }
-    }
-} 
-
-?></li>
-    <li> email : <?php $cari = mysqli_query($conn, "SELECT email FROM user WHERE email = '$email' ");
-
-if (mysqli_num_rows($cari) > 0) {
-    while ($row = mysqli_fetch_assoc($cari)) {
-        echo $row["email"];
-        if ($row["email"]=="") {
-            echo "unknown";
-        }
-    }
-} 
-
-?></li>
-    <li>password : <?php $cari = mysqli_query($conn, "SELECT password FROM user WHERE email = '$email' ");
-
-if (mysqli_num_rows($cari) > 0) {
-    while ($row = mysqli_fetch_assoc($cari)) {
-        echo $row["password"];
-        if ($row["password"]=="") {
-            echo "unknown";
-        }
-    }
-} 
-
-?></li>
-    <li>level : <?php $cari = mysqli_query($conn, "SELECT level FROM user WHERE email = '$email' ");
-
-if (mysqli_num_rows($cari) > 0) {
-    while ($row = mysqli_fetch_assoc($cari)) {
-        echo $row["level"];
-        if ($row["level"]=="") {
-            echo "unknown";
-        }
-    }
-} 
-
-?></li>
- 
-</ul>  
-
-<a class = 'kembali' href="admin.php">Kembali</a>
-
-
+    <div class="profil-container">
+        <h1>User Profil</h1>
+        <ul>
+            <li>ID User: <?php echo $_SESSION['iduser'] ?></li>
+            <li>Username: <?php echo $row['name'] ?></li>
+            <li>Email: <?php echo $email ?></li>
+            <li>Password: <?php echo $row['password'] ?></li>
+            <li>Level: <?php echo $row['level'] ?></li>
+        </ul>
+        <a class="kembali" href="landing-page.php">Kembali</a>
+    </div>
 </body>
 </html>

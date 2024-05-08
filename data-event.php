@@ -187,6 +187,11 @@ $result = mysqli_query($conn, $query);
             echo "<td>" . $row["lokasi"] . "</td>";
             echo "<td>" . $row["jam"] . "</td>";
             echo "<td>" . $row["harga"] . "</td>";
+            echo "<td>";
+            echo "<a class='edit'href='edit.php?id=".$row['id']."'>Edit</a> | ";
+            echo "<a class='hapus'href='hapusevent.php?id=".$row['id']."'>Hapus</a>";
+            echo "</td>";
+
 
             echo "</tr>";
         }

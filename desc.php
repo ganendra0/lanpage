@@ -1,5 +1,8 @@
 <?php
 
+session_start();
+
+
 require "koneksi.php";
 
 $id = $_GET['id'];
@@ -109,7 +112,13 @@ $event = mysqli_fetch_assoc($query);
             </div>
             <h2>Deskripsi</h2>
             <p><?php echo $event['deskripsi'] ?></p>
-            <a href="pay.php?id= <?php echo $event['id']?>">buy ticket</a>
+            <?php
+
+    if (!$_SESSION['seller']) {
+        echo '<a href="pay.php?id=' . $event["id"] . '">buy ticket</a>';
+    }
+        ?>
+            
         </section>
         <section class="detail">
             <h2>Detail</h2>
