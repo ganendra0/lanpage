@@ -16,7 +16,7 @@ if (isset($_SESSION['email'])) {
 $cari = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email' ");
 $row = mysqli_fetch_assoc($cari);
 
-
+include "nav.php";
 
 
 ?>
@@ -30,16 +30,20 @@ $row = mysqli_fetch_assoc($cari);
     <title>User Profil</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap">
     <style>
+
+
         body {
             font-family: 'Poppins', sans-serif;
             background-color: rgb(34, 33, 35);
             color: #fff;
-            padding: 20px;
+            padding: 0px;
         }
 
         h1 {
             text-align: center;
             margin-bottom: 20px;
+            margin-top: 40px;
+
         }
 
         ul {
@@ -51,16 +55,16 @@ $row = mysqli_fetch_assoc($cari);
             margin-bottom: 10px;
         }
 
-        .profil-container {
+        .profil {
             max-width: 500px;
             margin: 0 auto;
         }
 
-        .profil-container ul li {
+        .profil ul li {
             font-size: 18px;
         }
 
-        .profil-container a.kembali {
+        .profil a.kembali {
             display: inline-block;
             padding: 10px 20px;
             background-color: rgb(218, 167, 40); 
@@ -71,13 +75,13 @@ $row = mysqli_fetch_assoc($cari);
             text-align: center;
         }
 
-        .profil-container a.kembali:hover {
+        .profil a.kembali:hover {
             opacity: 0.8;
         }
     </style>
 </head>
 <body>
-    <div class="profil-container">
+    <div class="profil">
         <h1>User Profil</h1>
         <ul>
             <li>ID User: <?php echo $_SESSION['iduser'] ?></li>

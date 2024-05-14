@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);//Atauerror_reporting(E_ALL && ~E_NOTICE);
+
 session_start();
 
 require 'koneksi.php';

@@ -5,8 +5,10 @@ session_start();
 if(!isset($_SESSION['login']) ) {
     header("location: index.php");
     exit;
+
 }
 
+include "nav.php";
 
 
 ?>
@@ -78,7 +80,7 @@ align-content: center;
     display: flex;
    }
 
-   a{
+   .back a{
     background-color: rgb(218, 167, 40);
     color: rgb(34, 33, 35);
     border-radius: 5px;
@@ -91,7 +93,7 @@ align-content: center;
     cursor: pointer;
    }
 
-   a:hover{
+   .back a:hover{
     opacity: 0.45;
    }
 

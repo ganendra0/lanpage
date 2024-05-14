@@ -24,6 +24,8 @@ $idseller = $_SESSION['iduser'];
 $query = "SELECT * FROM event WHERE idseller = '$idseller' ";
 $result = mysqli_query($conn, $query);
 
+include "nav.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -42,14 +44,22 @@ body{
     background-color: rgb(34, 33, 35);
 }
 
-.navbar {
+*{
+    margin-left: 0;
+    margin-top: 0;
+    margin-right: 0;
+
+}
+
+
+.nav {
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
     display: flex;   
     justify-content: center;
 }
 
-.navbar ul {
+.nav ul {
         background-color: #333;
         border-radius: 30px;
         list-style-type: none;
@@ -59,7 +69,7 @@ body{
         justify-content: space-between;
     }
 
-.navbar a {
+.nav a {
     display: block;
     color: rgb(218, 167, 40);
     text-align: center;
@@ -67,7 +77,7 @@ body{
     text-decoration: none;
 }
 
-.navbar a:hover {
+.nav a:hover {
     text-decoration: underline;
     border-radius: 30px;
 }
@@ -93,13 +103,13 @@ h1{
     border: solid gray;
     border-radius: 30px;
     background-color: gray;
-    padding-left: 30px;
+    padding-left: 30px;    
     margin-right: 80px;
     margin-left: 30px;
     margin-top: 30px;
     position: relative;
-    padding-top: 15px;
-    padding-bottom: 30px;
+    padding-top: 25px;
+    padding-bottom: 50px;
     font-family: 'Poppins', sans-serif;
 
 }
@@ -109,7 +119,7 @@ h1{
     width: 180px;
     position: relative;
     float: left;
-    margin-top: 20px;
+    margin-top:20px;
     margin-right: 40px;
     object-fit: cover;
     margin-left: auto;
@@ -125,11 +135,16 @@ h1{
     border-radius: 10px;
 }
 
-.card p{
-    margin-right: 60%;
+.card h2{
+    padding-top: 30px;
 
 }
 
+.card p{
+    margin-right: 60%;
+    padding: 10px;
+
+}
 .add a{
     display: inline-block;
     padding: 5px 10px;
@@ -152,7 +167,7 @@ h1{
     margin-top: 40px;      
     margin-left: 30px;  
     font-family: 'Poppins', sans-serif;
-    width: 70px;
+    width: 60px;
 }
 
 
@@ -160,13 +175,14 @@ h1{
 </head>
 <body>
 
+
 <div class='back'> 
- <a href="landing-page.php">kembali</a>
+ <a href="landing-page.php">back</a>
 </div>
 
 <?php
 if ($_SESSION['seller']) {
-    echo "<div class='navbar'>
+    echo "<div class='nav'>
         <ul>
             <div class='event'><li><a href='event.php'>All event</a></li></div>
             <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
@@ -175,7 +191,7 @@ if ($_SESSION['seller']) {
 }
 
 elseif ($_SESSION['admin']) {
-    echo "<div class='navbar'>
+    echo "<div class='nav'>
         <ul>
             <div class='event'><li><a href='event.php'>All event</a></li></div>
             <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>

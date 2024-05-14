@@ -17,6 +17,7 @@ if (isset($_SESSION['email'])) {
     exit;
 }
 
+include "nav.php";
 
 ?>
 
@@ -49,53 +50,7 @@ body{
 }
 
 
-.navbar {
-    background-color: #333;
-    overflow: hidden;
-    font-family: 'Poppins', sans-serif;
-    width: 100%;
-    position: sticky; /* Membuat navigasi tetap di tempatnya */
-    top: 0; /* Menempatkan navbar di bagian atas halaman */
-    z-index: 1000; /* Menentukan urutan tumpukan untuk menangani tumpukan yang lebih tinggi */
-}
 
-
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    justify-content: space-between;
-}
-
-
-.navbar li {
-    float: left;
-}
-
-.navbar a {
-    display: block;
-    color: rgb(218, 167, 40);
-    text-align: center;
-    padding: 20px 16px;
-    text-decoration: none;}
-
-.navbar img{
-    padding: 13px 10px 5px;
-
-}
-
-.navbar p{
-    color: #ddd;
-    float: right;
-    margin-right: 50px;
-    margin-top: 20px;
-}
-
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
-}
 
 .username h2 {
     color: beige;
@@ -129,6 +84,12 @@ align-content: center;
 }
 
 .tr h1{
+    font-family: 'Cinzel', serif;
+    font-size: 50px;
+
+}
+
+.tr h2{
     font-family: 'Cinzel', serif;
     font-size: 50px;
 
@@ -376,38 +337,20 @@ section{
 </head>
 <body>
 
-    <nav class="navbar">
-        <ul>
-            <!-- <li><img src="javent.png" width="150px" margin-top="5px"></li> -->
-            <li><a href="logout.php">Logout</a></li>
-            <li><a href="event.php">Event</a></li>
-            <li><a href="profil.php">Profil</a></li>
-
-            <?php 
-            if ($_SESSION['admin']) {
-                echo "<li><a href='data.php'>Data</a></li>";
-            }
-            ?>
-            
-          <p>Halo,  <?php $cari = mysqli_query($conn, "SELECT name FROM user WHERE email = '$email' ");
-
-if (mysqli_num_rows($cari) > 0) {
-    while ($row = mysqli_fetch_assoc($cari)) {
-        echo $row["name"];
-        if ($row["name"]=="") {
-            echo "unknown";
-        }
-    }
-} 
-
-?>
-</p>
-
-        </ul>
-        
-    </nav>
+    
 
     <div class="tr">
+        <h1>Halo,  
+            <?php 
+            $cari = mysqli_query($conn, "SELECT name FROM user WHERE email = '$email' ");
+
+            if (mysqli_num_rows($cari) > 0) {
+                while ($row = mysqli_fetch_assoc($cari)) {
+                    echo $row["name"] ? $row["name"] : "unknown"; // Menggunakan operator ternary
+                }
+            } 
+            ?>
+        </h1>
          <h1>Mau nonton pertunjukan budaya?</h1>
             <a href="event.php">explore event</a>
     </div>

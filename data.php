@@ -9,6 +9,9 @@ if(!isset($_SESSION['admin']) ) {
     exit;
 }
 
+include 'nav.php';
+
+
 ?>
 
 <!DOCTYPE html>
@@ -24,43 +27,40 @@ if(!isset($_SESSION['admin']) ) {
         font-family: 'Poppins', sans-serif;
     }
 
-        .navbar {
-    background-color: #333;
+    .nav {
     overflow: hidden;
     font-family: 'Poppins', sans-serif;
-    width: 100%;
+    display: flex;   
+    justify-content: center;
+    margin-top: 70px;
 }
 
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    justify-content: space-between;
-}
+.nav ul {
+        background-color: #333;
+        border-radius: 30px;
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: space-between;
+    }
 
-
-.navbar li {
-    float: left;
-}
-
-.navbar a {
+.nav a {
     display: block;
     color: rgb(218, 167, 40);
     text-align: center;
-    padding: 20px 16px;
-    text-decoration: none;}
-
-.navbar p{
-    color: #ddd;
-    float: right;
-    margin-right: 50px;
-    margin-top: 20px;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
-.navbar a:hover {
-    background-color: #ddd;
-    color: black;
+.nav a:hover {
+    text-decoration: underline;
+    border-radius: 30px;
+}
+
+.user{
+    background-color: #ffe;
+    border-radius: 30px;
 }
 
 
@@ -105,6 +105,8 @@ a.add-user, a.kembali {
     color: black; 
     text-decoration: none;
     border-radius: 5px;
+    margin-top: 70px;
+
 }
 
 
@@ -132,14 +134,13 @@ a.hapus {
 </head>
 <body>
 
-<nav class="navbar">
+<div class='nav'>
         <ul>
-            <li><a href="data.php">User</a></li>
-            <li><a href="data-event.php">Event</a></li>
-            <li><a href="data-payment.php">Payment</a></li>
-            </ul>
-        
-        </nav>
+            <div class='user'><li><a href='data.php'>user</a></li></div>
+            <div class='event'><li><a href='data-event.php'>event</a></li></div>
+            <div class='payment'><li><a href='data-payment.php'>payment</a></li></div>
+        </ul>     
+    </div>
 
 <h1>Data Tabel User</h1>
 <a href="add.php" class = "add-user">add user</a>

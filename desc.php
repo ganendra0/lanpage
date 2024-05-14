@@ -10,6 +10,13 @@ $id = $_GET['id'];
 $sql = "SELECT * FROM event WHERE id = '$id' ";
 $query = mysqli_query($conn, $sql);
 $event = mysqli_fetch_assoc($query);
+
+$iduser = $_SESSION['iduser'];
+
+$myevent = $event['idseller'];
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -33,6 +40,8 @@ $event = mysqli_fetch_assoc($query);
             line-height: 1.5;
             background-color: rgb(34, 33, 35);
         }
+
+        
 
         h1{
             text-align: center;
@@ -104,6 +113,7 @@ $event = mysqli_fetch_assoc($query);
     </style>
 </head>
 <body>
+
         <h1><?php echo $event['nama'] ?></h1>
     <main>
         <section class="deskripsi">
@@ -114,7 +124,7 @@ $event = mysqli_fetch_assoc($query);
             <p><?php echo $event['deskripsi'] ?></p>
             <?php
 
-    if (!$_SESSION['seller']) {
+    if ($myevent != $iduser && !$_SESSION['seller']) {
         echo '<a href="pay.php?id=' . $event["id"] . '">buy ticket</a>';
     }
         ?>

@@ -21,6 +21,7 @@ $event = mysqli_fetch_assoc($query);
 
 
 
+
 ?>
 
 <!DOCTYPE html>
