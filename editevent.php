@@ -1,25 +1,19 @@
 <?php
+ini_set('display_errors', 1);//Atauerror_reporting(E_ALL && ~E_NOTICE);
+
 session_start();
 
 require 'koneksi.php';
 
-// Pastikan pengguna sudah login sebagai seller atau admin
-if (!$_SESSION['seller'] && !$_SESSION['admin']) {
-  header("Location: event.php");
-  exit;
-}
 
-// Ambil id event dari URL
+
 $id_event = $_GET['id'];
 
-// Ambil detail event dari database berdasarkan id
 $query = "SELECT * FROM event WHERE id = $id_event";
 $result = mysqli_query($conn, $query);
 $event = mysqli_fetch_assoc($result);
 
-// Proses form jika ada pengiriman data melalui POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Ambil data yang dikirim melalui form
     $nama = $_POST['nama'];
     $deskripsi = $_POST['deskripsi'];
     $lokasi = $_POST['lokasi'];
@@ -30,7 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $temp = $_FILES['gambar']['tmp_name'];
     $targetDir = "../landing/gambar/";
 
-    // Jika pengguna mengunggah gambar baru, simpan gambar baru
     if (!empty($gambar)) {
         if (move_uploaded_file($temp, $targetDir . $gambar)) {
             $query = "UPDATE event SET nama='$nama', deskripsi='$deskripsi', lokasi='$lokasi', tanggal='$tanggal', jam='$jam', gambar='$gambar', harga='$harga' WHERE id=$id_event";
@@ -39,15 +32,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         }
     } else {
-        // Jika tidak ada gambar yang diunggah, simpan detail event tanpa perubahan gambar
         $query = "UPDATE event SET nama='$nama', deskripsi='$deskripsi', lokasi='$lokasi', tanggal='$tanggal', jam='$jam', harga='$harga' WHERE id=$id_event";
     }
 
-    // Eksekusi query update
     if (mysqli_query($conn, $query)) {
-        echo "<script> alert('Data berhasil diperbarui.') </script>";
-        header("Location: data-event.php");
+       if ($_SESSION['admin']) {
+        echo "<script>
+        alert('Data berhasil diperbarui.');
+        window.location.href = 'data-event.php';
+      </script>";
         exit;
+       }
+       elseif ($_SESSION['seller']) {
+        echo "<script>
+        alert('Data berhasil diperbarui.');
+        window.location.href = 'myevent.php';
+      </script>";
+        exit;
+       }
     } else {
         echo "<script>alert('Terjadi kesalahan. Data gagal diperbarui.')</script>";
     }

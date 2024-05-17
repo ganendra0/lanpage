@@ -123,18 +123,25 @@ echo $id;
 
 <div class="bayar">
     <p>Jumlah tiket : <br> 1</p>
-    <p>Harga tiket : <br> <?php echo $event['harga'] ?></p>
-    <p>tax : <br> 2.000</p>
+    <p>Harga tiket : <br> <?php echo number_format($event['harga']) ?></p>
+    <p>tax : <br> 10%</p>
     <p>total : <br><?php
     $harga= $event['harga'];
-    $total = $harga + 2000;
-    echo $total;
+    $tax = $harga * 10/100;
+    $total = $harga + $tax;
+    echo number_format($total);
     ?></p>
     <form method="post">
     <label for="metode">Metode pembayaran : <br></label>
     <select name='metode'>
-		<option value='qris'>qris</option>
-		<option value='transfer'>transfer bank</option>
+		<option value='bca'>bca</option>
+		<option value='mandiri'>mandiri</option>
+        <option value='bni'>bni</option>
+        <option value='dana'>dana</option>
+        <option value='ovo'>ovo</option>
+
+
+
 	  </select>
       <input type="submit" name="bayar" value="bayar">
     </form>

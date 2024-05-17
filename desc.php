@@ -15,7 +15,9 @@ $iduser = $_SESSION['iduser'];
 
 $myevent = $event['idseller'];
 
-
+$sellerQuery = "SELECT * FROM user WHERE id = '$myevent'";
+$sellerResult = mysqli_query($conn, $sellerQuery);
+$seller = mysqli_fetch_assoc($sellerResult);
 
 ?>
 
@@ -136,8 +138,8 @@ $myevent = $event['idseller'];
                 <li>Lokasi : <?php echo $event['lokasi'] ?></li>
                 <li>Tanggal : <?php echo $event['tanggal'] ?></li>
                 <li>Jam : <?php echo $event['jam'] ?></li>
-                <li>Seller : <?php echo $event['seller'] ?></li>
-                <li>Harga tiket : <?php echo $event['harga'] ?></li>
+                <li>Seller : <?php echo $seller['name'] ?></li>
+                <li>Harga tiket : <?php echo number_format($event['harga']) ?></li>
             </ul>
         </section>
         <a href="event.php">back</a>

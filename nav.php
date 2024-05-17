@@ -71,6 +71,7 @@
         </ul>
        
         <ul>
+            <li><a href="landing-page.php">Home</a></li>
             <li><a href="event.php">Event</a></li>
             <li><a href="profil.php">Profil</a></li>
 

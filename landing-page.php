@@ -33,6 +33,7 @@ include "nav.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>suku</title>
+
     
     <style>
 
@@ -332,6 +333,31 @@ section{
   z-index: 0; 
 }
 
+footer {
+    background: #111;
+    color: #fff;
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.a {
+    width: 500px;
+}
+
+.b {
+    width: 500px;
+}
+
+.foot{
+    gap: 150px;
+}
+
+.footer-bottom{
+    text-align: center;
+}
+
+
 
     </style>
 </head>
@@ -418,6 +444,28 @@ section{
         </div></a></div>
 
     </section>
+
+    <footer>
+    <div class="mfooter">
+        <section class="foot">
+            <div class="a">
+                <h3>about</h3>
+                <p>Prof. Dr.-Ing. Ir. H. Bacharuddin Jusuf Habibie, FREng.[1] (25 Juni 1936 – 11 September 2019)[2][a] adalah Presiden Republik Indonesia yang ketiga. Sebelumnya, B.J. Habibie menjabat sebagai Wakil Presiden Republik Indonesia ke-7, menggantikan Try Sutrisno. B. J. Habibie menggantikan Soeharto yang mengundurkan diri dari jabatan presiden pada tanggal 21 Mei 1998.[3][4] Sebelum memasuki dunia politik, Habibie dikenal luas sebagai seorang profesor dan ilmuwan dalam teknologi aviasi internasional dan satu-satunya presiden Indonesia hingga saat ini yang berlatarbelakang teknokrat.
+
+            </div>
+
+            <div class="b">
+                <h3>about</h3>
+                <p>Prof. Dr.-Ing. Ir. H. Bacharuddin Jusuf Habibie, FREng.[1] (25 Juni 1936 – 11 September 2019)[2][a] adalah Presiden Republik Indonesia yang ketiga. Sebelumnya, B.J. Habibie menjabat sebagai Wakil Presiden Republik Indonesia ke-7, menggantikan Try Sutrisno. B. J. Habibie menggantikan Soeharto yang mengundurkan diri dari jabatan presiden pada tanggal 21 Mei 1998.[3][4] Sebelum memasuki dunia politik, Habibie dikenal luas sebagai seorang profesor dan ilmuwan dalam teknologi aviasi internasional dan satu-satunya presiden Indonesia hingga saat ini yang berlatarbelakang teknokrat.
+
+            </div>
+        </section>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 Nama Situs Web Anda. All Rights Reserved.</p>
+    </div>
+</footer>
+
 
     
 </body>

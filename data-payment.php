@@ -162,7 +162,7 @@ a.hapus {
         $query = "SELECT p.id, e.nama AS nama_content, p.total, p.payment, p.uid, u.email 
                   FROM payment AS p 
                   INNER JOIN event AS e ON e.id = p.idc 
-                  INNER JOIN user AS u ON u.id = p.uid";
+                  INNER JOIN user AS u ON u.id = p.uid WHERE p.status = 1";
         $result = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($result) > 0) {

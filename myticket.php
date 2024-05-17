@@ -60,6 +60,8 @@ body{
     font-family: 'Poppins', sans-serif;
     display: flex;   
     justify-content: center;
+    margin-top: 50px;
+
 }
 
 .nav ul {
@@ -192,18 +194,6 @@ h1{
 
 }
 
-.back a{
-    display:flex;
-    padding: 5px 10px;
-    background-color: rgb(218, 167, 40); 
-    color: black; 
-    text-decoration: none;
-    border-radius: 10px;
-    margin-top: 40px;      
-    margin-left: 30px;  
-    font-family: 'Poppins', sans-serif;
-    width: 60px;
-}
 
 
     </style>
@@ -212,9 +202,7 @@ h1{
 
 
 
-<div class='back'> 
- <a href="landing-page.php">back</a>
-</div>
+
 
 <?php 
 if ($_SESSION['seller']) {
@@ -232,6 +220,7 @@ elseif ($_SESSION['admin']) {
             <div class='event'><li><a href='event.php'>All event</a></li></div>
             <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
             <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
+            <div class='mydata'><li><a href='mydata.php'>My data</a></li></div>s
         </ul>     
     </div>";
 }
