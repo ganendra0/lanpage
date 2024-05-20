@@ -165,6 +165,8 @@ table {
             margin-right: 30px;
             margin-top: 30px;
             margin-bottom: 30px;
+            font-family: 'Poppins', sans-serif;
+
 
 
         }
@@ -380,7 +382,7 @@ else{
 
 <?php
 
-// Inisialisasi variabel total
+// Inisialisasi vaiabel total
 $pay = "belum ada pembayaran";
 
 $iduser = $_SESSION['iduser'];

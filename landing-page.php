@@ -449,20 +449,20 @@ footer {
     <div class="mfooter">
         <section class="foot">
             <div class="a">
-                <h3>about</h3>
-                <p>Prof. Dr.-Ing. Ir. H. Bacharuddin Jusuf Habibie, FREng.[1] (25 Juni 1936 – 11 September 2019)[2][a] adalah Presiden Republik Indonesia yang ketiga. Sebelumnya, B.J. Habibie menjabat sebagai Wakil Presiden Republik Indonesia ke-7, menggantikan Try Sutrisno. B. J. Habibie menggantikan Soeharto yang mengundurkan diri dari jabatan presiden pada tanggal 21 Mei 1998.[3][4] Sebelum memasuki dunia politik, Habibie dikenal luas sebagai seorang profesor dan ilmuwan dalam teknologi aviasi internasional dan satu-satunya presiden Indonesia hingga saat ini yang berlatarbelakang teknokrat.
+                <h3>about</h3><br>
+                <p>Arutala merupakan website di bidang kebudayaan yang menawarkan layanan untuk jual beli tiket event kebudayaan.</p>
 
             </div>
 
             <div class="b">
                 <h3>about</h3>
-                <p>Prof. Dr.-Ing. Ir. H. Bacharuddin Jusuf Habibie, FREng.[1] (25 Juni 1936 – 11 September 2019)[2][a] adalah Presiden Republik Indonesia yang ketiga. Sebelumnya, B.J. Habibie menjabat sebagai Wakil Presiden Republik Indonesia ke-7, menggantikan Try Sutrisno. B. J. Habibie menggantikan Soeharto yang mengundurkan diri dari jabatan presiden pada tanggal 21 Mei 1998.[3][4] Sebelum memasuki dunia politik, Habibie dikenal luas sebagai seorang profesor dan ilmuwan dalam teknologi aviasi internasional dan satu-satunya presiden Indonesia hingga saat ini yang berlatarbelakang teknokrat.
+                <p></p>
 
             </div>
         </section>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Nama Situs Web Anda. All Rights Reserved.</p>
+        <p>&copy; 2024 Nama Arutala. All Rights Reserved.</p>
     </div>
 </footer>
 
