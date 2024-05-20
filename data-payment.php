@@ -174,7 +174,6 @@ a.hapus {
                 echo "<td>" . $row["payment"] . "</td>";
                 echo "<td>" . $row["email"] . "</td>";
                 echo "<td>";
-                echo "<a class='edit'href='editevent.php?id=".$row['id']."'>Edit</a> | ";
                 echo "<a class='hapus'href='hapuspayment.php?id=".$row['id']."'>Hapus</a>";
                 echo "</td>";
                 echo "</tr>";

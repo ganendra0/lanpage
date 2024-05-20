@@ -11,10 +11,10 @@ if( isset($_GET['id']) ){
     $query = mysqli_query($conn, $sql);
 
     if( $query ){
-        echo "<script>
-        alert('payment gagal di hapus');
-         </script>";
-    header('location: mydata.php');
+         echo "<script>
+    alert('payment berhasil di hapus');
+    window.history.back();
+     </script>";
     } else {
         echo "<script>
     alert('payment gagal di hapus');

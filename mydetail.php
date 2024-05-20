@@ -288,8 +288,8 @@ WHERE p.idc = $id AND p.status = 1";
 
     </div>
 
-    <a class='edit' href='editevent.php?id="<?php echo $id;?>"'>Edit event</a>
-    <a class='hapus' href='hapusevent.php?id="<?php echo $id;?>"'>Hapus event</a>
+    <a class='edit' href='editevent.php?id=<?php echo $id;?>'>Edit event</a>
+    <a class='hapus' href='hapusevent.php?id=<?php echo $id;?>'>Hapus event</a>
 
 
         <a class="back" href="myevent.php">back</a>
