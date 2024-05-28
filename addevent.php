@@ -1,5 +1,4 @@
 <?php
-ini_set('display_errors', 1);//Atauerror_reporting(E_ALL && ~E_NOTICE);
 
 session_start();
 
@@ -108,6 +107,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+
           }
 
       input[type="submit"]:hover {
@@ -120,13 +121,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2>Add new event</h2>
 
     <form method="post" action="" enctype="multipart/form-data">
-        Nama Event: <input type="text" name="nama"><br><br>
-        Deskripsi: <textarea name="deskripsi"></textarea><br><br>
-        Lokasi: <input type="text" name="lokasi"><br><br>
-        Tanggal: <input type="date" name="tanggal"><br><br>
-        Jam: <input type="time" name="jam"><br><br>
-        Gambar: <input type="file" name="gambar"><br><br>
-        Harga (masukkan hanya angka): <input type="text" name="harga" ><br><br>
+        Nama Event : <input type="text" name="nama"><br><br>
+        Deskripsi : <textarea name="deskripsi"></textarea><br><br>
+        Lokasi : <input type="text" name="lokasi"><br><br>
+        Tanggal : <input type="date" name="tanggal"><br><br>
+        Jam : <input type="time" name="jam"><br><br>
+        Gambar : <input type="file" name="gambar"><br><br>
+        Harga : (masukkan hanya angka): <input type="text" name="harga" ><br><br>
         <input type="submit" value="Add Event">
     </form>
 </body>

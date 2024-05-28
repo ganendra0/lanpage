@@ -29,13 +29,14 @@ body{
 
 .head{
     height: 500px;
-    width: 100%;
-   margin-left: 30px;
-   margin-top: 20px;
+    width: 98%;
+    margin-top: 20px;
+    margin-left: 35px;
+
 }
 
 .head img{
-width: 98%;
+width: 96%;
 height: 400px;
 object-fit: cover;
 object-position: 10% 40%;
@@ -45,14 +46,19 @@ align-content: center;
  z-index: -1;
 }
 
-.tr h1{
-    font-family: 'Cinzel', serif;
+.tr{
     position: absolute;
     padding-top: 130px;
     color: aliceblue;
-    font-size: 50px;
     text-align: center;
     width: 100%; 
+}
+
+.tr h1{
+    font-family: 'Cinzel', serif;
+    font-size: 50px;
+    margin-top: 50px;
+
 }
 
 .judul{

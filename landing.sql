@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2024 at 04:53 AM
+-- Generation Time: May 20, 2024 at 01:08 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `event` (
   `id` int(11) NOT NULL,
-  `seller` varchar(30) NOT NULL,
+  `idseller` int(30) NOT NULL,
   `nama` varchar(20) NOT NULL,
   `deskripsi` varchar(1000) NOT NULL,
   `tanggal` date NOT NULL,
@@ -43,12 +43,8 @@ CREATE TABLE `event` (
 -- Dumping data for table `event`
 --
 
-INSERT INTO `event` (`id`, `seller`, `nama`, `deskripsi`, `tanggal`, `lokasi`, `jam`, `gambar`, `harga`) VALUES
-(14, 'seller@s.s', 'tes seller', 'halo satu dua tiga tes email seller udah masuk atau belum', '2024-03-23', 'sidoarjo', '13:40', 'Screen Shot 2024-03-13 at 10.52.34.png', 0),
-(15, 'seller@s.s', 'tes seller 2', 'abcd efgh ijkl mnop qrst uvwx yzab cdef ghij klmn opqr stuv wxyz', '2024-04-06', 'tol sumo', '22:00', 'Screen Shot 2023-08-15 at 10.28.25.png', 50000),
-(18, 'seller@s.s', 'Event 1', 'tes tes tes tes tes tes tes tse tse tes tes tse tes tes tes tse tse et s se ets ', '2024-04-02', 'sidoarjo', '23:15', 'Screen Shot 2024-03-18 at 12.44.08.png', 30000),
-(19, 'seller@s.s', 'event 2', 'alfjksd aljdksf alkjdsf aljkfds alkjdfs aklfjds aljskdf', '2024-03-28', 'sidoarjo', '10:24', 'Screen Shot 2024-02-29 at 17.07.34.png', 20000),
-(20, 'seller@s.s', 'nabil hahok', 'adfasdfasfsafas', '2024-03-30', 'gunung kidul', '12:08', 'WhatsApp Image 2024-03-26 at 11.00.18 PM.jpeg', 20000);
+INSERT INTO `event` (`id`, `idseller`, `nama`, `deskripsi`, `tanggal`, `lokasi`, `jam`, `gambar`, `harga`) VALUES
+(21, 22, 'tes id argsaa', 'tes id sellereadwasdf', '2024-05-20', 'siduarju', '20:08', 'Screen Shot 2024-04-30 at 14.58.16.png', 30000);
 
 -- --------------------------------------------------------
 
@@ -61,24 +57,22 @@ CREATE TABLE `payment` (
   `idc` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   `payment` varchar(20) NOT NULL,
-  `email` varchar(30) NOT NULL
+  `uid` int(10) NOT NULL,
+  `unik` varchar(20) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `payment`
 --
 
-INSERT INTO `payment` (`id`, `idc`, `total`, `payment`, `email`) VALUES
-(1, 18, 32000, 'qris', 'seller@s.s'),
-(2, 18, 32000, 'qris', 'ganendrajawara0@gmail.com'),
-(3, 15, 2000, 'qris', 'ganendrajawara0@gmail.com'),
-(4, 18, 32000, 'qris', 'ganendrajawara0@gmail.com'),
-(5, 15, 2000, 'qris', 'ganendrajawara0@gmail.com'),
-(6, 13, 2000, 'transfer', 'ganendrajawara0@gmail.com'),
-(7, 18, 32000, 'qris', 'jawa@tes.com'),
-(8, 15, 2000, 'qris', 'jawa@tes.com'),
-(9, 20, 22000, 'qris', 'ganendrajawara0@gmail.com'),
-(10, 15, 52000, 'transfer', 'ganendrajawara0@gmail.com');
+INSERT INTO `payment` (`id`, `idc`, `total`, `payment`, `uid`, `unik`, `status`) VALUES
+(21, 22, 22000, 'transfer', 3, '271a3df50e4bacb4', 0),
+(26, 27, 12000, 'dana', 3, '59ea5bc03fcfd66d', 0),
+(32, 27, 12000, 'ovo', 3, '6a83571be14c76e5', 0),
+(36, 21, 32000, 'dana', 3, '916ffeeb524e8384', 1),
+(38, 28, 62000, 'dana', 3, 'd7eaf9e0aaeb5fc5', 1),
+(39, 21, 32000, 'bca', 3, '427fb5be7e2e53ec', 1);
 
 -- --------------------------------------------------------
 
@@ -99,7 +93,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `password`, `level`) VALUES
-(3, 'JAwa', 'ganendrajawara0@gmail.com', '999', 'user'),
+(3, 'vaio', 'ganendrajawa@gmail.com', '999', 'user'),
 (5, 'arga', 'jawa@tes.com', '26', 'user'),
 (6, 'b', 'admin@h.c', '222', 'user'),
 (7, 'c', '1@e.b', '1234', 'user'),
@@ -117,7 +111,8 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `level`) VALUES
 (19, 'gaga', 'gaga@gmail.com', '123123', 'admin'),
 (20, 'tes regist', 'h@h.h', '666', 'user'),
 (22, 'bakoel frozen', 'seller@s.s', '222', 'seller'),
-(23, 'seller 2', 'seller2@g.g', '222', 'seller');
+(23, 'seller 2', 'seller2@g.g', '222', 'seller'),
+(24, 'vano', 'va@gmail.com', '1234', 'user');
 
 --
 -- Indexes for dumped tables
@@ -127,13 +122,17 @@ INSERT INTO `user` (`id`, `name`, `email`, `password`, `level`) VALUES
 -- Indexes for table `event`
 --
 ALTER TABLE `event`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idseller` (`idseller`),
+  ADD KEY `idseller_2` (`idseller`);
 
 --
 -- Indexes for table `payment`
 --
 ALTER TABLE `payment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `fk_user_payment` (`uid`),
+  ADD KEY `idc` (`idc`);
 
 --
 -- Indexes for table `user`
@@ -149,19 +148,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `event`
 --
 ALTER TABLE `event`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

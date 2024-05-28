@@ -5,6 +5,11 @@ session_start();
 
 require "koneksi.php";
 
+if(!isset($_SESSION['admin']) && !isset($_SESSION['seller']) ) {
+    header("location: landing-page.php");
+    exit;
+}
+
 $id = $_GET['id'];
 
 $sql = "SELECT * FROM event WHERE id = '$id' ";

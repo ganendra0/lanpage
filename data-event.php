@@ -4,8 +4,8 @@ session_start();
 
 require 'koneksi.php';
 
-if(!isset($_SESSION['admin']) ) {
-    header("location: index.php");
+if(!isset($_SESSION['admin'])) {
+    header("location: landing-page.php");
     exit;
 }
 
@@ -97,6 +97,9 @@ body{
 
         }
 
+        .all{
+    margin: 30px;
+}
     
 
 a.add-user, a.kembali {
@@ -142,6 +145,8 @@ a.hapus {
             <div class='payment'><li><a href='data-payment.php'>payment</a></li></div>
         </ul>     
     </div>
+
+    <div class="all">
 
 <h1>Data Tabel Event</h1>
 <a href="addevent.php" class = "add-user">add event</a>
@@ -208,7 +213,7 @@ $result = mysqli_query($conn, $query);
 
 
 <a class = 'kembali' href="landing-page.php">Kembali</a>
-
+</div>
 </body>
 </html>
 

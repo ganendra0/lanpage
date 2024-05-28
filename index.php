@@ -55,7 +55,7 @@
 
 
 body {
-        font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
         background-color: rgb(34, 33, 35);
         margin-top: 100px;
       }

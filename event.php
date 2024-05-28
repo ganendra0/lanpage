@@ -106,6 +106,7 @@ h1{
     margin-right: 80px;
     margin-left: 30px;
     margin-top: 30px;
+    margin-bottom: 30px;
     position: relative;
     padding-top: 25px;
     padding-bottom: 50px;
@@ -182,7 +183,7 @@ elseif ($_SESSION['admin']) {
             <div class='event'><li><a href='event.php'>All event</a></li></div>
             <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
             <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
-            <div class='mydata'><li><a href='mydata.php'>My data</a></li></div>s
+            <div class='mydata'><li><a href='mydata.php'>My data</a></li></div>
         </ul>     
     </div>";
 }

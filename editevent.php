@@ -1,10 +1,13 @@
 <?php
-ini_set('display_errors', 1);//Atauerror_reporting(E_ALL && ~E_NOTICE);
 
 session_start();
 
 require 'koneksi.php';
 
+if(!isset($_SESSION['admin']) && !isset($_SESSION['seller']) ) {
+    header("location: landing-page.php");
+    exit;
+}
 
 
 $id_event = $_GET['id'];

@@ -58,6 +58,10 @@ include 'nav.php';
     border-radius: 30px;
 }
 
+.all{
+    margin: 30px;
+}
+
 .user{
     background-color: #ffe;
     border-radius: 30px;
@@ -142,6 +146,7 @@ a.hapus {
         </ul>     
     </div>
 
+<div class="all">
 <h1>Data Tabel User</h1>
 <a href="add.php" class = "add-user">add user</a>
 
@@ -183,7 +188,7 @@ $result = mysqli_query($conn, $query);
 </table>
 
 <a class = 'kembali' href="landing-page.php">Kembali</a>
-
+</div>
 </body>
 </html>
 

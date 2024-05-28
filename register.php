@@ -34,7 +34,7 @@ body{
 
 
 body {
-        font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
         padding-top: 100px;
 
       }

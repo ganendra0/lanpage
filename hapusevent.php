@@ -4,6 +4,11 @@ session_start(); // Start session if you are using session elsewhere in your pro
 
 require "koneksi.php";
 
+if(!isset($_SESSION['admin']) && !isset($_SESSION['seller']) ) {
+    header("location: landing-page.php");
+    exit;
+}
+
 if (isset($_GET['id'])) {
 
     $id = mysqli_real_escape_string($conn, $_GET['id']); // Sanitize input

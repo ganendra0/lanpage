@@ -2,6 +2,11 @@
 
 require "koneksi.php";
 
+if(!isset($_SESSION['admin']) && !isset($_SESSION['seller']) ) {
+    header("location: landing-page.php");
+    exit;
+}
+
 if( isset($_GET['id']) ){
 
     $id = $_GET['id'];

@@ -53,16 +53,14 @@ body{
 
 
 
-.username h2 {
-    color: beige;
-}
 
 
 .head{
     height: 500px;
     width: 98%;
-   margin-left: 30px;
-   margin-top: 20px;
+    margin-top: 20px;
+    margin-left: 35px;
+
 }
 
 .head img{
@@ -334,7 +332,7 @@ section{
 }
 
 footer {
-    background: #111;
+    background: #333;
     color: #fff;
     padding: 20px;
     font-family: 'Poppins', sans-serif;
@@ -346,7 +344,8 @@ footer {
 }
 
 .b {
-    width: 500px;
+    width: 300px;
+    margin-left: 150px;
 }
 
 .foot{
@@ -355,6 +354,19 @@ footer {
 
 .footer-bottom{
     text-align: center;
+}
+
+.b a{
+    color: white;
+}
+
+.b h3{
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.icon a{
+    margin-left: 10px;
 }
 
 
@@ -450,19 +462,31 @@ footer {
         <section class="foot">
             <div class="a">
                 <h3>about</h3><br>
-                <p>Arutala merupakan website di bidang kebudayaan yang menawarkan layanan untuk jual beli tiket event kebudayaan.</p>
+                <p>Arutala merupakan website di bidang kebudayaan yang menawarkan layanan untuk jual beli tiket event kebudayaan. Jelajahi keragaman budaya Indonesia bersama kami. Dapatkan tiket Anda untuk acara seni, festival, dan pameran terbaik.</p>
 
             </div>
 
             <div class="b">
-                <h3>about</h3>
-                <p></p>
+                <h3>contact me</h3>
+                <p><ul>
+                    <li><p>ganendrajawara0@gmail.com</p></li>
+                    <li><p>+62 812 3280 5606</p></li>
+                    
+                </ul></p>
 
             </div>
         </section>
+        <div class="icon">
+        <a href="https://www.instagram.com/ganendra_610?igsh=MXhiOGhueTUzZjExbw==">
+            <img src="instagram.png" width="50px" height="50px">
+    </a>
+    <a href="https://github.com/ganendra0">
+            <img src="github.png" width="50px" height="50px">
+    </a>
+        </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2024 Nama Arutala. All Rights Reserved.</p>
+        <p>&copy; 2024 Arutala. All Rights Reserved.</p>
     </div>
 </footer>
 

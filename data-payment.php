@@ -60,6 +60,10 @@ body{
     border-radius: 30px;
 }
 
+.all{
+    margin: 30px;
+}
+
 .payment{
     background-color: #ffe;
     border-radius: 30px;
@@ -99,7 +103,7 @@ body{
 
     
 
-a.add-user, a.kembali {
+a.kembali {
     display: inline-block;
     padding: 10px 20px;
     background-color: rgb(218, 167, 40); 
@@ -107,7 +111,6 @@ a.add-user, a.kembali {
     text-decoration: none;
     border-radius: 5px;
     margin-top: 70px;
-
 }
 
 
@@ -143,8 +146,9 @@ a.hapus {
         </ul>     
     </div>
 
+    <div class="all">
+
 <h1>Data Tabel Payment</h1>
-<a href="add.php" class = "add-user">add payment</a>
 
 
 
@@ -187,7 +191,7 @@ a.hapus {
     </table>
 
 <a class = 'kembali' href="landing-page.php">Kembali</a>
-
+</div>
 </body>
 </html>
 

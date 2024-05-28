@@ -17,6 +17,13 @@ if (!isset($_SESSION['email'])) {
     exit;
 }
 
+if (isset($_SESSION['seller'])) {
+    header("Location: index.php");
+    exit;
+}
+
+
+
 $id = $_GET['id'];
 $uid = $_SESSION['iduser'];
 
@@ -62,6 +69,7 @@ body{
     justify-content: center;
     margin-top: 50px;
 
+
 }
 
 .nav ul {
@@ -92,6 +100,8 @@ body{
     font-family: 'Poppins', sans-serif;
     display: flex;   
     justify-content: center;
+    margin-top: 50px;
+
 }
 
 .navbarr ul {
@@ -220,7 +230,7 @@ elseif ($_SESSION['admin']) {
             <div class='event'><li><a href='event.php'>All event</a></li></div>
             <div class='myticket'><li><a href='myticket.php'>My ticket</a></li></div>
             <div class='myevent'><li><a href='myevent.php'>My event</a></li></div>
-            <div class='mydata'><li><a href='mydata.php'>My data</a></li></div>s
+            <div class='mydata'><li><a href='mydata.php'>My data</a></li></div>
         </ul>     
     </div>";
 }

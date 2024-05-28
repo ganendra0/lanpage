@@ -1,6 +1,11 @@
 <?php 
-
+session_start();
 require 'koneksi.php';
+
+if(!isset($_SESSION['admin'])) {
+  header("location: landing-page.php");
+  exit;
+}
 
 if (isset($_POST['register'])) {
   if (registrasi($_POST) > 0 ) {
