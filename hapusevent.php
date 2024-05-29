@@ -18,10 +18,20 @@ if (isset($_GET['id'])) {
     $query = mysqli_query($conn, $sql);
 
     if ($query) {
-        echo "<script>
-            alert('Event berhasil dihapus');
+        if ($_SESSION['admin']) {
+            echo "<script>
+            alert('Data berhasil diperbarui.');
             window.history.back();
-        </script>";
+          </script>";
+            exit;
+           }
+           elseif ($_SESSION['seller']) {
+            echo "<script>
+            alert('Data berhasil diperbarui.');
+            window.location.href = 'myevent.php';
+          </script>";
+            exit;
+           }
     } else {
         echo "<script>
             alert('Event gagal dihapus');
